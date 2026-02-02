@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planet Yoga — Sabbatical / Sabbatique</title>
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Dancing Script -->
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#f6f3ef;
+      --text:#1f1f1f;
+      --muted:#5b5b5b;
+      --blue:rgb(0,117,181);
+      --radius:18px;
+    }
+
+    * { box-sizing: border-box; }
+
+    body{
+      margin:0;
+      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.55;
+    }
+
+    /* =======================
+       LOGO STRIP
+       ======================= */
+    .logo-strip{
+      background:#fff;
+      border-bottom:1px solid rgba(0,0,0,.08);
+      padding:26px 18px 18px;
+    }
+
+    .logo-strip-inner{
+      width:min(1200px,100%);
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:200px 1fr;
+      align-items:center;
+      gap:20px;
+    }
+
+    .logo-left img{
+      height:70px;
+      width:auto;
+      display:block;
+    }
+
+    .logo-title{
+      text-align:left;
+    }
+
+    .logo-line{
+      display:inline-flex;
+      align-items:baseline;
+      gap:12px;
+      white-space:nowrap;
+    }
+
+    .logo-main{
+      font-family:"Dancing Script","Lucida Console",Monaco,monospace;
+      font-weight:400;
+      font-size:56px;
+      line-height:112px;
+      color:var(--blue);
+      padding:0 10px;
+    }
+
+    .logo-sub{
+      font-family:"Dancing Script","Lucida Console",Monaco,monospace;
+      font-weight:400;
+      font-size:56px;
+      line-height:112px;
+      color:var(--blue);
+    }
+
+    .logo-tagline{
+      margin-top:-18px;
+      font-family:"Dancing Script","Lucida Console",Monaco,monospace;
+      font-size:28px;
+      color:var(--blue);
+    }
+
+    /* Mobile fallback */
+    @media (max-width: 900px){
+      .logo-strip-inner{
+        grid-template-columns:1fr;
+        justify-items:center;
+        text-align:center;
+      }
+
+      .logo-line{
+        white-space:normal;
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .logo-main,
+      .logo-sub{
+        font-size:36px;
+        line-height:64px;
+      }
+
+      .logo-tagline{
+        margin-top:0;
+        font-size:22px;
+      }
+    }
+
+    /* =======================
+       HERO
+       ======================= */
+    .hero{
+      min-height:56vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:48px 18px;
+      background:
+        linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.45)),
+        url("assets/hero.jpg") center/cover no-repeat;
+      margin-bottom:64px;
+    }
+
+    .hero-card{
+      width:min(980px,100%);
+      padding:28px 24px;
+      background:rgba(255,255,255,.6);
+      backdrop-filter:blur(18px) saturate(120%);
+      -webkit-backdrop-filter:blur(18px) saturate(120%);
+      border-radius:var(--radius);
+      border:1px solid rgba(255,255,255,.25);
+      box-shadow:0 18px 36px rgba(0,0,0,.22);
+    }
+
+    .pill{
+      display:inline-block;
+      margin-bottom:16px;
+      padding:10px 14px;
+      border-radius:999px;
+      background:rgba(0,117,181,.15);
+      color:#0e5f8f;
+      font-weight:600;
+      font-size:.95rem;
+    }
+
+    .content{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+
+    @media (max-width:840px){
+      .content{ grid-template-columns:1fr; }
+    }
+
+    .panel{
+      background:rgba(255,255,255,.9);
+      border-radius:14px;
+      padding:16px;
+      border:1px solid rgba(0,0,0,.05);
+    }
+
+    .panel h2{
+      margin:0 0 8px;
+      font-size:1.05rem;
+    }
+
+    .panel p{
+      margin:0 0 10px;
+    }
+
+    .muted{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    .divider{
+      height:1px;
+      background:rgba(0,0,0,.1);
+      margin:16px 0;
+    }
+
+    /* =======================
+       PHOTOS
+       ======================= */
+    .photos{
+      width:min(980px,100%);
+      margin:0 auto 48px;
+      padding:0 18px;
+    }
+
+    .strip{
+      background:#fff;
+      border-radius:16px;
+      padding:16px;
+      border:1px solid rgba(0,0,0,.06);
+      box-shadow:0 14px 40px rgba(0,0,0,.1);
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    @media (max-width:840px){
+      .grid{ grid-template-columns:1fr; }
+    }
+
+    figure{
+      margin:0;
+      border-radius:12px;
+      overflow:hidden;
+      border:1px solid rgba(0,0,0,.08);
+    }
+
+    figure img{
+      width:100%;
+      height:210px;
+      object-fit:cover;
+      display:block;
+    }
+
+    figcaption{
+      padding:10px;
+      font-size:.92rem;
+      color:var(--muted);
+    }
+
+    footer{
+      text-align:center;
+      padding:24px 18px 36px;
+      color:var(--muted);
+      font-size:.95rem;
+    }
+
+    a{ color:var(--blue); text-decoration:none; }
+    a:hover{ text-decoration:underline; }
+  </style>
+</head>
+
+<body>
+
+<!-- LOGO STRIP -->
+<div class="logo-strip">
+  <div class="logo-strip-inner">
+    <div class="logo-left">
+      <img src="assets/logo.jpg" alt="Planet Yoga logo">
+    </div>
+
+    <div class="logo-title">
+      <h1 class="logo-line">
+        <span class="logo-main">Planet Yoga</span>
+        <span class="logo-sub">Iyengar Yoga in Montreal</span>
+      </h1>
+      <div class="logo-tagline">
+        Welcome to Planet Yoga — we teach hatha yoga the Iyengar way
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-card">
+    <div class="pill">🌿 Closed for sabbatical / Fermé pour sabbatique</div>
+
+    <div class="content">
+      <section class="panel">
+        <h2>English</h2>
+        <p>Planet Yoga is taking a sabbatical and will be closed for approximately one year.</p>
+        <p class="muted">Thank you for your kindness and understanding. We look forward to reconnecting when we return.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Français</h2>
+        <p>Planet Yoga prend une année sabbatique et sera fermé pendant environ un an.</p>
+        <p class="muted">Merci de votre compréhension. Au plaisir de vous retrouver à notre retour.</p>
+      </section>
+    </div>
+
+    <div class="divider"></div>
+
+    <section class="panel">
+      <h2>Contact</h2>
+      <p class="muted">
+        Email: <a href="mailto:contact@planetyoga.ca">contact@planetyoga.ca</a> •
+        Phone: <a href="tel:+15144736530">514-473-6530</a>
+      </p>
+    </section>
+  </div>
+</header>
+
+<!-- PHOTOS -->
+<main class="photos">
+  <div class="strip">
+    <div class="grid">
+      <figure>
+        <img src="assets/photo-1.jpg" alt="">
+        <figcaption>Thank you for being part of this community.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/photo-2.jpg" alt="">
+        <figcaption>We’ll be back with fresh energy.</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/photo-3.jpg" alt="">
+        <figcaption>À bientôt — and take good care.</figcaption>
+      </figure>
+    </div>
+  </div>
+</main>
+
+<footer>
+  © <span id="y"></span> Planet Yoga
+</footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
