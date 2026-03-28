@@ -17,7 +17,13 @@
       --radius:18px;
     }
 
-    * { box-sizing: border-box; }
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      -webkit-text-size-adjust:100%;
+    }
 
     body{
       margin:0;
@@ -25,77 +31,132 @@
       background:var(--bg);
       color:var(--text);
       line-height:1.55;
+      overflow-x:hidden;
+    }
+
+    img{
+      display:block;
+      max-width:100%;
+      height:auto;
+    }
+
+    a{
+      color:var(--blue);
+      word-break:break-word;
     }
 
     /* LOGO */
     .logo-strip{
       background:#fff;
       border-bottom:1px solid rgba(0,0,0,.08);
-      padding:26px 18px 18px;
+      padding:22px 16px 16px;
     }
 
     .logo-strip-inner{
       width:min(1200px,100%);
       margin:0 auto;
       display:grid;
-      grid-template-columns:200px 1fr;
+      grid-template-columns:180px 1fr;
       align-items:center;
       gap:20px;
     }
 
+    .logo-left{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
     .logo-left img{
-      height:70px;
+      width:auto;
+      max-height:70px;
     }
 
     .logo-main,
-    .logo-sub{
-      font-family:"Dancing Script";
-      font-size:56px;
+    .logo-sub,
+    .logo-tagline{
+      font-family:"Dancing Script", cursive;
       color:var(--blue);
+      line-height:1.1;
+    }
+
+    .logo-main{
+      font-size:clamp(2rem, 5vw, 3.5rem);
+    }
+
+    .logo-sub{
+      font-size:clamp(1.6rem, 4vw, 3rem);
+      margin-top:2px;
     }
 
     .logo-tagline{
-      font-family:"Dancing Script";
-      font-size:28px;
-      color:var(--blue);
+      font-size:clamp(1.2rem, 3vw, 1.75rem);
+      margin-top:6px;
     }
 
     @media (max-width:900px){
       .logo-strip-inner{
         grid-template-columns:1fr;
         text-align:center;
+        gap:12px;
       }
-      .logo-main,.logo-sub{ font-size:36px; }
+
+      .logo-left img{
+        max-height:60px;
+        margin:0 auto;
+      }
+    }
+
+    @media (max-width:480px){
+      .logo-strip{
+        padding:18px 14px 14px;
+      }
+
+      .logo-main{
+        font-size:2.1rem;
+      }
+
+      .logo-sub{
+        font-size:1.7rem;
+      }
+
+      .logo-tagline{
+        font-size:1.35rem;
+      }
     }
 
     /* HERO */
     .hero{
-      min-height:56vh;
+      min-height:52vh;
       display:flex;
       align-items:center;
       justify-content:center;
-      padding:48px 18px;
+      padding:40px 16px;
       background:
         linear-gradient(rgba(0,0,0,.35),rgba(0,0,0,.45)),
         url("assets/hero.jpg") center/cover no-repeat;
-      margin-bottom:64px;
+      margin-bottom:48px;
     }
 
     .hero-card{
       width:min(980px,100%);
-      padding:28px;
-      background:rgba(255,255,255,.7);
+      padding:24px;
+      background:rgba(255,255,255,.78);
       backdrop-filter:blur(16px);
+      -webkit-backdrop-filter:blur(16px);
       border-radius:var(--radius);
+      box-shadow:0 8px 30px rgba(0,0,0,.12);
     }
 
     .pill{
-      margin-bottom:16px;
+      display:inline-block;
+      margin-bottom:18px;
       padding:10px 14px;
       border-radius:999px;
       background:rgba(0,117,181,.15);
       color:#0e5f8f;
       font-weight:600;
+      font-size:.95rem;
     }
 
     .content{
@@ -104,14 +165,20 @@
       gap:16px;
     }
 
-    @media (max-width:840px){
-      .content{ grid-template-columns:1fr; }
-    }
-
     .panel{
       background:#fff;
       border-radius:14px;
-      padding:16px;
+      padding:18px;
+    }
+
+    .panel h2{
+      margin:0 0 8px;
+      font-size:1.2rem;
+      line-height:1.25;
+    }
+
+    .panel p{
+      margin:0;
     }
 
     .divider{
@@ -120,57 +187,124 @@
       margin:16px 0;
     }
 
+    @media (max-width:840px){
+      .hero{
+        min-height:auto;
+        padding:28px 14px;
+        margin-bottom:36px;
+      }
+
+      .hero-card{
+        padding:18px;
+      }
+
+      .content{
+        grid-template-columns:1fr;
+      }
+    }
+
+    @media (max-width:480px){
+      .hero-card{
+        padding:16px;
+        border-radius:14px;
+      }
+
+      .pill{
+        font-size:.88rem;
+        padding:9px 12px;
+      }
+
+      .panel{
+        padding:14px;
+      }
+
+      .panel h2{
+        font-size:1.05rem;
+      }
+    }
+
     /* PHOTOS */
     .photos{
       width:min(980px,100%);
-      margin:0 auto 48px;
-      padding:0 18px;
+      margin:0 auto 40px;
+      padding:0 16px;
     }
 
     .grid{
       display:grid;
       grid-template-columns:repeat(3,1fr);
-      gap:10px;
+      gap:12px;
     }
 
-    @media (max-width:840px){
-      .grid{ grid-template-columns:1fr; }
+    figure{
+      margin:0;
+      overflow:hidden;
+      border-radius:14px;
+      background:#fff;
     }
 
     figure img{
       width:100%;
-      height:210px;
+      height:220px;
       object-fit:cover;
+    }
+
+    @media (max-width:840px){
+      .grid{
+        grid-template-columns:1fr;
+      }
+
+      figure img{
+        height:240px;
+      }
+    }
+
+    @media (max-width:480px){
+      .photos{
+        padding:0 14px;
+      }
+
+      .grid{
+        gap:10px;
+      }
+
+      figure img{
+        height:200px;
+      }
     }
 
     footer{
       text-align:center;
-      padding:24px;
+      padding:20px 16px 28px;
       color:var(--muted);
+      font-size:.95rem;
     }
 
-    /* 🔵 PROMO BUBBLE */
+    /* PROMO BUBBLE */
     .promo-bubble{
       position:fixed;
-      bottom:20px;
       right:20px;
-      max-width:340px;
+      bottom:20px;
+      width:min(340px, calc(100vw - 24px));
+      max-height:min(70vh, 520px);
+      overflow:auto;
       background:#fff;
       border-radius:16px;
       padding:16px 18px;
       box-shadow:0 12px 30px rgba(0,0,0,.2);
-      font-size:.9rem;
-      line-height:1.4;
+      font-size:.92rem;
+      line-height:1.45;
       z-index:9999;
     }
 
     .promo-close{
       position:absolute;
-      top:6px;
+      top:8px;
       right:10px;
       cursor:pointer;
-      font-size:16px;
+      font-size:18px;
       color:#888;
+      line-height:1;
     }
 
     .promo-close:hover{
@@ -181,6 +315,12 @@
       .promo-bubble{
         left:12px;
         right:12px;
+        bottom:12px;
+        width:auto;
+        max-height:50vh;
+        padding:14px 16px;
+        font-size:.88rem;
+        border-radius:14px;
       }
     }
   </style>
@@ -188,75 +328,76 @@
 
 <body>
 
-<!-- PROMO -->
-<div class="promo-bubble" id="promo">
-  <div class="promo-close" onclick="document.getElementById('promo').style.display='none'">×</div>
-  Planet Yoga is now on Vimeo. You can rent class recordings (2020–2025).  
-  Unlimited access Monday–Sunday for $18.  
-  Levels: 1/2, Mixed, Intermediate, Easy Pace Iyengar.  
-  <br><br>
-  Send Interac to <a href="mailto:planetyogamontreal@gmail.com">planetyogamontreal@gmail.com</a>  
-  or PayPal (outside Canada).
-</div>
-
-<!-- LOGO -->
-<div class="logo-strip">
-  <div class="logo-strip-inner">
-    <div class="logo-left">
-      <img src="assets/logo.jpg">
-    </div>
-    <div>
-      <div class="logo-main">Planet Yoga</div>
-      <div class="logo-sub">Iyengar Yoga in Montreal</div>
-      <div class="logo-tagline">Welcome to Planet Yoga</div>
-    </div>
+  <!-- PROMO -->
+  <div class="promo-bubble" id="promo">
+    <div class="promo-close" onclick="document.getElementById('promo').style.display='none'">×</div>
+    Planet Yoga is now on Vimeo. You can rent class recordings (2020–2025).
+    Unlimited access Monday–Sunday for $18.
+    Levels: 1/2, Mixed, Intermediate, Easy Pace Iyengar.
+    <br><br>
+    Send Interac to
+    <a href="mailto:planetyogamontreal@gmail.com">planetyogamontreal@gmail.com</a>
+    or PayPal (outside Canada).
   </div>
-</div>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-card">
-    <div class="pill">🌿 Closed for sabbatical</div>
-
-    <div class="content">
-      <div class="panel">
-        <h2>English</h2>
-        <p>Planet Yoga is taking a sabbatical for about one year.</p>
+  <!-- LOGO -->
+  <div class="logo-strip">
+    <div class="logo-strip-inner">
+      <div class="logo-left">
+        <img src="assets/logo.jpg" alt="Planet Yoga logo">
       </div>
-
-      <div class="panel">
-        <h2>Français</h2>
-        <p>Planet Yoga prend une année sabbatique.</p>
+      <div>
+        <div class="logo-main">Planet Yoga</div>
+        <div class="logo-sub">Iyengar Yoga in Montreal</div>
+        <div class="logo-tagline">Welcome to Planet Yoga</div>
       </div>
     </div>
+  </div>
 
-    <div class="divider"></div>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="hero-card">
+      <div class="pill">🌿 Closed for sabbatical</div>
 
-    <div class="panel">
-      Email:
-      <a href="mailto:planetyogamontreal@gmail.com">
-        planetyogamontreal@gmail.com
-      </a>
+      <div class="content">
+        <div class="panel">
+          <h2>English</h2>
+          <p>Planet Yoga is taking a sabbatical for about one year.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Français</h2>
+          <p>Planet Yoga prend une année sabbatique.</p>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="panel">
+        Email:
+        <a href="mailto:planetyogamontreal@gmail.com">
+          planetyogamontreal@gmail.com
+        </a>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- PHOTOS -->
-<main class="photos">
-  <div class="grid">
-    <figure><img src="assets/photo-1.jpg"></figure>
-    <figure><img src="assets/photo-2.jpg"></figure>
-    <figure><img src="assets/photo-3.jpg"></figure>
-  </div>
-</main>
+  <!-- PHOTOS -->
+  <main class="photos">
+    <div class="grid">
+      <figure><img src="assets/photo-1.jpg" alt="Planet Yoga photo 1"></figure>
+      <figure><img src="assets/photo-2.jpg" alt="Planet Yoga photo 2"></figure>
+      <figure><img src="assets/photo-3.jpg" alt="Planet Yoga photo 3"></figure>
+    </div>
+  </main>
 
-<footer>
-  © <span id="y"></span> Planet Yoga
-</footer>
+  <footer>
+    © <span id="y"></span> Planet Yoga
+  </footer>
 
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
